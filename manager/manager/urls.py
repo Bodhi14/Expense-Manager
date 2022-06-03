@@ -19,13 +19,8 @@ from rest_framework import routers
 from app import views
 from django.urls import path, include
 
-
-# router = routers.DefaultRouter()
-# router.register(r'expenses', views.expense_list, basename='expenses')
-# router.register(r'expense-detail', views.expense_detail, basename='expense-detail')
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('', include('app.urls')),
+    path('expenses-api/', views.ExpenseAPI.as_view()),
+    path('expense-api/<int:pk>/', views.ExpenseAPI.as_view())
 ]

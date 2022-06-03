@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Expense(models.Model):
-    id = models.FloatField(primary_key=True, max_length=1000, blank=True)
+    id = models.IntegerField(primary_key=True, blank=True)
     title = models.TextField(max_length=1000, blank=True, null=True)
     amount = models.IntegerField(blank=True, null=True)
     
