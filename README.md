@@ -1,2 +1,2 @@
 # Expense-Manager
-A REST API for my Expense Project database.
+A REST API for my Expense Tracker Project.
