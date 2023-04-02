@@ -1,8 +1,5 @@
-
-from functools import partial
-from tkinter.tix import STATUS
 from django.shortcuts import render
-from django.urls import path 
+from django.urls import path
 from . import views
 from rest_framework.views import APIView
 from django.shortcuts import render
@@ -44,7 +41,7 @@ class ExpenseAPI(APIView):
 
             return Response({'msg': 'New Expense added', 'data-added': serializer.data, 'data': alldataserializer.data}, status=status.HTTP_201_CREATED)
         return Response(alldataserializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     def delete(self, request, pk=None, format=None):
         id = pk
         if id is not None:
@@ -52,7 +49,7 @@ class ExpenseAPI(APIView):
             expenses = Expense.objects.all()
             serializer = ExpenseSerializer(expenses, many=True)
             return Response({'msg': 'Expense with id   ' + str(id) + 'is deleted', 'data': serializer.data})
-    
+
 
         qs = Expense.objects.all()
         if qs:
@@ -60,10 +57,10 @@ class ExpenseAPI(APIView):
             serializer = ExpenseSerializer(qs, many=True)
             return Response({'msg': 'Last Expense Deleted', 'data': serializer.data})
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
-    
+
     def put(self, request, pk=None, format=None):
         id = pk
-        if id is not None: 
+        if id is not None:
             expense = Expense.objects.get(pk=id)
             serializer = ExpenseSerializer(expense, data=request.data)
 
@@ -77,7 +74,7 @@ class ExpenseAPI(APIView):
 
     def patch(self, request, pk=None, format=None):
         id = pk
-        if id is not None: 
+        if id is not None:
             expense = Expense.objects.get(pk=id)
             serializer = ExpenseSerializer(expense, data=request.data, partial=True)
 
@@ -87,11 +84,11 @@ class ExpenseAPI(APIView):
                 alldataserializer = ExpenseSerializer(qs, many=True)
                 return Response({'msg' : 'Expense having ID : ' + str(id) + ' is updated', 'data-updated': serializer.data ,'data': alldataserializer.data}, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'msg': 'Cannot update the expense' + str(id), 'data': serializer.data}) 
+        return Response({'msg': 'Cannot update the expense' + str(id), 'data': serializer.data})
 
 
-        
-        
+
+
 
 
 
@@ -130,7 +127,7 @@ class ExpenseAPI(APIView):
 #             serializer = ExpenseSerializer(expense)
 #             return Response(serializer.data)
 #         return Response(serializer.errors)
-        
+
 #     if request.method == 'DELETE':
 #         to_delete = Expense.objects.get(pk=pk)
 #         if to_delete:
@@ -140,17 +137,17 @@ class ExpenseAPI(APIView):
 #             return Response({'msg': 'Expense deleted'})
 #         return Response(serializer.errors)
 
-    
-    
-
-    
 
 
-    
 
 
-        
-        
+
+
+
+
+
+
+
 
 
 
