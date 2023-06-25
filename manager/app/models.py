@@ -4,7 +4,9 @@ from django.db import models
 class Expense(models.Model):
     id = models.IntegerField(primary_key=True, blank=True)
     title = models.TextField(max_length=1000, blank=True, null=True)
+    content = models.TextField(max_length=1000, blank=True, null=True)
     amount = models.IntegerField(blank=True, null=True)
+    
     
 
 
